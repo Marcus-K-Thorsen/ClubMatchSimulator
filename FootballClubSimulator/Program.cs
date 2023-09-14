@@ -11,6 +11,10 @@ Console.WriteLine($"{clubA.ClubName} Offense: '{clubA.Offense}' Defence: '{clubA
 Console.WriteLine("----------------------------------VS----------------------------------");
 Console.WriteLine($"{clubB.ClubName} Offense: '{clubB.Offense}' Defence: '{clubB.Defense}'");
 Console.WriteLine();
-MatchOutcome outcome = match.SimulateOutcome(clubA, clubB);
-Console.WriteLine($"{outcome.FirstClub.ClubName} Score: '{outcome.FirstClubScore}'");
-Console.WriteLine($"{outcome.SecondClub.ClubName} Score: '{outcome.SecondClubScore}'");
+MatchOutcome outcome1 = match.SimulateOutcome(clubA, clubB);
+Console.WriteLine($"Away From Home: {outcome1.FirstClub.ClubName} Score: '{outcome1.FirstClubScore}'");
+Console.WriteLine($"At Home Turf: {outcome1.SecondClub.ClubName} Score: '{outcome1.SecondClubScore}'");
+
+MatchOutcome outcome2 = match.SimulateOutcome(clubB, clubA);
+Console.WriteLine($"Away From Home: {outcome2.FirstClub.ClubName} Score: '{outcome2.FirstClubScore}'");
+Console.WriteLine($"At Home Turf: {outcome2.SecondClub.ClubName} Score: '{outcome2.SecondClubScore}'");
