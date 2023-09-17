@@ -4,9 +4,10 @@ namespace FootballClubSimulator.controllers;
 
 public class ClubController
 {
+    /*
     public Club GetClub(string name)
     {
-        return new Club(name);
+        return new Club(name, new League("error league"));
     }
 
     public List<Club> GetClubs()
@@ -37,4 +38,5 @@ public class ClubController
         }
         return changedClub;
     }
+    */
 }

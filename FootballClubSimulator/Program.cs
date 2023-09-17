@@ -1,20 +1,55 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using FootballClubSimulator.models;
+using FootballClubSimulator.repositories;
 
+
+League league1 = new League("DBU København");
+League league2 = new League("Some League");
+List<Club> teams = new List<Club>()
+{
+    new Club("Kjøbenhavns Boldklub", "KB", league1),
+    new Club("Boldklubben Frem", "BF", league1),
+    new Club("Boldklubben Dana", "BD", league1),
+    new Club("Akademisk Boldklub", "AB", league1),
+    new Club("Østerbro Boldklub", "ØB", league1),
+    new Club("Boldklubben af 1893", "B 93", league1),
+    new Club("Boldklubben Urania", "BU", league1),
+    new Club("Boldklubben Lydia", "BL", league1),
+    new Club("Boldklubben af 1899", "B 99", league1),
+    new Club("Kristelig Forening for Unge Mænds Boldklub", "KFUM", league1),
+    new Club("Boldklubben Sylvia", "BS", league1),
+    new Club("Boldklubben Apollo", "BA", league1)
+};
+List<League> leagues = new List<League>()
+{
+    league1,
+    league2
+};
+
+//Console.WriteLine($"hdhdfgr {Path.Combine(Environment.CurrentDirectory, "\\..\\..\\..\\files")}");
+LeagueRepo leagueRepo = new LeagueRepo();
+Console.WriteLine(leagueRepo.ReadAll()[0].Teams.Count);
+
+
+/*
 MatchSimulator match = new MatchSimulator();
+League league = new League("Some Exciting Lol League");
 
-Club clubA = new Club("AF Gutterne");
-Club clubB = new Club("BFF Trunserne");
+Club clubA = new Club("Gutterne", "AF", league);
+Club clubB = new Club("Trunserne", "BF", league);
 
-Console.WriteLine($"{clubA.ClubName} Offense: '{clubA.Offense}' Defence: '{clubA.Defense}'");
+
+
+Console.WriteLine($"{clubA.ClubNameAbbreviated} {clubA.ClubName} Offense: '{clubA.Offense}' Defence: '{clubA.Defense}'");
 Console.WriteLine("----------------------------------VS----------------------------------");
-Console.WriteLine($"{clubB.ClubName} Offense: '{clubB.Offense}' Defence: '{clubB.Defense}'");
+Console.WriteLine($"{clubB.ClubNameAbbreviated} {clubB.ClubName} Offense: '{clubB.Offense}' Defence: '{clubB.Defense}'");
 Console.WriteLine();
 MatchOutcome outcome1 = match.SimulateOutcome(clubA, clubB);
-Console.WriteLine($"Away From Home: {outcome1.FirstClub.ClubName} Score: '{outcome1.FirstClubScore}'");
-Console.WriteLine($"At Home Turf: {outcome1.SecondClub.ClubName} Score: '{outcome1.SecondClubScore}'");
-
+Console.WriteLine($"Away From Home: {outcome1.HomeClubAbbreviated} Score: '{outcome1.HomeClubScore}'");
+Console.WriteLine($"At Home Turf: {outcome1.AwayClubAbbreviated} Score: '{outcome1.AwayClubScore}'");
+Console.WriteLine();
 MatchOutcome outcome2 = match.SimulateOutcome(clubB, clubA);
-Console.WriteLine($"Away From Home: {outcome2.FirstClub.ClubName} Score: '{outcome2.FirstClubScore}'");
-Console.WriteLine($"At Home Turf: {outcome2.SecondClub.ClubName} Score: '{outcome2.SecondClubScore}'");
+Console.WriteLine($"Away From Home: {outcome2.HomeClubAbbreviated} Score: '{outcome2.HomeClubScore}'");
+Console.WriteLine($"At Home Turf: {outcome2.AwayClubAbbreviated} Score: '{outcome2.AwayClubScore}'");
+*/

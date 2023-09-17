@@ -19,7 +19,7 @@ public class MatchSimulator
         }
         
         
-        return new MatchOutcome(firstClub, firstClubScore, secondClub, secondClubScore);
+        return new MatchOutcome(firstClub.ClubNameAbbreviated, firstClubScore, secondClub.ClubNameAbbreviated, secondClubScore);
     }
 
     private int SimulateGoalOpportunity(Club attackingClub, Club defendingClub)
