@@ -157,12 +157,12 @@ public class League
         return CalculateTeamStandings();
     }
 
-    // TODO få lavet metode i Club der kan resette den til på ny
+    
     private void ResetTeamsStandings()
     {
         foreach (Club team in Teams)
         {
-            // team.ResetStandings(); // Kalder metode i Club instancen der sætter dens standings til at være helt ny.
+            team.ResetStandings(); // Kalder metode i Club instancen der sætter dens standings til at være helt ny.
         }
     }
 }

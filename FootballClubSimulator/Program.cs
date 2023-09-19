@@ -1,7 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+
 using FootballClubSimulator.models;
 using FootballClubSimulator.repositories;
+
+
 
 
 League league1 = new League("DBU København");

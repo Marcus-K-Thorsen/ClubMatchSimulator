@@ -18,38 +18,54 @@ public class Club
             return _league.LeagueName;
         }
     }
+    
+    public char SpecialRankingThisYear { set; get; }
+    public char SpecialRankingLastYear { set; get; }
 
     public int Defense { set; get; }
     public int Offense { set; get; }
     
-    // ___________________ OTHER PROPERTIES/FIELDS _________________________________
-    private League? _league;
-    public League League
-    {
-        set
-        { 
-            if (_league != null && LeagueName != value?.LeagueName) 
-            { 
-                Club foundPastLeagueTeam = _league.Teams.Find(team => team.ClubNameAbbreviated == this.ClubNameAbbreviated);
-                if (foundPastLeagueTeam != null)
-                {
-                    _league.Teams.Remove(foundPastLeagueTeam);
-                }
-            }
-            if (value != null)
-            {
-                bool foundNewLeagueTeam = !value.Teams.Exists(team => team.ClubNameAbbreviated == this.ClubNameAbbreviated);
-                if (foundNewLeagueTeam) 
-                {
-                    value.Teams.Add(this);
-                }
-            }
-            _league = value;
-        }
-        get { return _league; }
-    }
-
     
+    private League? _league;
+        public League League
+        {
+            set
+            { 
+                if (_league != null && LeagueName != value?.LeagueName) 
+                { 
+                    Club foundPastLeagueTeam = _league?.Teams.Find(team => team.ClubNameAbbreviated == this.ClubNameAbbreviated);
+                    if (foundPastLeagueTeam != null)
+                    {
+                        _league?.Teams.Remove(foundPastLeagueTeam);
+                    }
+                }
+                if (value != null)
+                {
+                    bool foundNewLeagueTeam = !value.Teams.Exists(team => team.ClubNameAbbreviated == this.ClubNameAbbreviated);
+                    if (foundNewLeagueTeam) 
+                    {
+                        value.Teams.Add(this);
+                    }
+                }
+                _league = value;
+            }
+            get { return _league; }
+        }
+    // ___________________ OTHER PROPERTIES/FIELDS _________________________________
+    
+    // Standing variables
+    public int PositionInTable { get; set; }
+    public int MatchesPlayed { get; set; }
+    public int GamesWon { get; set; }
+    public int GamesDrawn { get; set; }
+    public int GamesLost { get; set; }
+    public int GoalsFor { get; set; }
+    public int GoalsAgainst { get; set; }
+    public int GoalDifference
+    {
+        get => GoalsFor - GoalsAgainst;
+    }
+    public int Points { get; set; }
 
     // ___________________ CONSTRUCTORS _________________________________
     public Club(string clubName, string clubNameAbbreviated, League league)
@@ -76,16 +92,18 @@ public class Club
     
     public Club(string[] clubValues)
     {
-        ClubName = clubValues[0];
-        ClubNameAbbreviated = clubValues[1];
-        Defense = Convert.ToInt32(clubValues[3]);
-        Offense = Convert.ToInt32(clubValues[4]);
+        ClubNameAbbreviated = clubValues[0];
+        ClubName = clubValues[1];
+
+        SpecialRankingLastYear = Convert.ToChar(clubValues[3]);
+        Defense = Convert.ToInt32(clubValues[4]);
+        Offense = Convert.ToInt32(clubValues[5]);
     }
 
-    public static string ConvertHeaderToCsvFormat = "ClubName,ClubNameAbbreviated,LeagueName,Defense,Offense";
+    public static readonly string ConvertHeaderToCsvFormat = "ClubNameAbbreviated,ClubName,LeagueName,SpecialRankingLastYear,Defense,Offense";
     public string ConvertToCsvFormat()
     {
-        return $"{ClubName},{ClubNameAbbreviated},{LeagueName},{Defense},{Offense}";
+        return $"{ClubNameAbbreviated},{ClubName},{LeagueName},{SpecialRankingThisYear},{Defense},{Offense}";
     }
     
     
@@ -93,6 +111,17 @@ public class Club
     // ___________________ SPECIAL METHODS _________________________________
 
 
+    public void ResetStandings()
+    {
+        PositionInTable = 0;
+        MatchesPlayed = 0;
+        GamesWon = 0;
+        GamesDrawn = 0;
+        GamesLost = 0;
+        GoalsFor = 0;
+        GoalsAgainst = 0;
+        Points = 0;
+    }
  
     
     private int LimitStat(int stat)

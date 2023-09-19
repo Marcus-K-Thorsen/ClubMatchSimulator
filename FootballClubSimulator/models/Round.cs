@@ -56,7 +56,7 @@ public class Round
         Match = new MatchOutcome(homeTeamAbbreviated, homeTeamScore, awayTeamAbbreviated, awayTeamScore);
     }
     
-    public static string ConvertHeaderToCsvFormat = "RoundNumber,LeagueName,HomeTeamAbbreviated,HomeTeamGoals,AwayTeamAbbreviated,AwayTeamGoals";
+    public static readonly string ConvertHeaderToCsvFormat = "RoundNumber,LeagueName,HomeTeamAbbreviated,HomeTeamGoals,AwayTeamAbbreviated,AwayTeamGoals";
     
 
     public string ConvertToCsvFormat()
