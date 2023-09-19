@@ -3,12 +3,11 @@
 
 using FootballClubSimulator.models;
 using FootballClubSimulator.repositories;
+using FootballClubSimulator.util;
 
 
-
-
-League league1 = new League("DBU København");
-League league2 = new League("Some League");
+League league1 = new League("Super Ligaen");
+League league2 = new League("Nordic Bet Ligaen");
 List<Club> teams = new List<Club>()
 {
     new Club("Kjøbenhavns Boldklub", "KB", league1),
@@ -31,10 +30,21 @@ List<League> leagues = new List<League>()
 };
 
 //Console.WriteLine($"hdhdfgr {Path.Combine(Environment.CurrentDirectory, "\\..\\..\\..\\files")}");
-LeagueRepo leagueRepo = new LeagueRepo();
-Console.WriteLine(leagueRepo.ReadAll()[0].Teams.Count);
+StandardRepository<League> leagueRepo = new LeagueRepo();
+//league1.CalculateNewTeamStandings();
+//leagueRepo.WriteAll(leagues);
 
+League leagueOne = leagueRepo.ReadAll()[0];
 
+leagueOne.CalculateFirstRoundsAllTeams().ForEach(team =>
+{
+   print($"Pos: '{team.PositionInTable}' - Name: '{team.ClubName}' - Matches: '{team.MatchesPlayed}' - Points: '{team.Points}' Goal Difference: '{team.GoalDifference}' - Goals For '{team.GoalsFor}' - Goals Against: '{team.GoalsAgainst}'");
+} );
+
+void print(string line)
+{
+    Console.WriteLine(line);
+}
 /*
 MatchSimulator match = new MatchSimulator();
 League league = new League("Some Exciting Lol League");

@@ -311,21 +311,22 @@ public class League
 
     private void SortTeamListByWinner(List<Club> teams)
     {
-        // Sort by Points (descending)
-        teams.Sort((club1, club2) => club2.Points.CompareTo(club1.Points));
-
-        // Sort by Goal Difference (descending)
-        teams.Sort((club1, club2) => club2.GoalDifference.CompareTo(club1.GoalDifference));
-
-        // Sort by Goals For (descending)
-        teams.Sort((club1, club2) => club2.GoalsFor.CompareTo(club1.GoalsFor));
-
-        // Sort by Goals Against (ascending)
-        teams.Sort((club1, club2) => club1.GoalsAgainst.CompareTo(club2.GoalsAgainst));
-
         // Sort alphabetically by club name
         teams.Sort((club1, club2) => club1.ClubName.CompareTo(club2.ClubName));
-
+        
+        // Sort by Goals Against (ascending)
+        teams.Sort((club1, club2) => club1.GoalsAgainst.CompareTo(club2.GoalsAgainst));
+        
+        // Sort by Goals For (descending)
+        teams.Sort((club1, club2) => club2.GoalsFor.CompareTo(club1.GoalsFor));
+        
+        // Sort by Goal Difference (descending)
+        teams.Sort((club1, club2) => club2.GoalDifference.CompareTo(club1.GoalDifference));
+        
+        // Sort by Points (descending)
+        teams.Sort((club1, club2) => club2.Points.CompareTo(club1.Points));
+        
+        
         Club pastTeam = null;
         
         for (int i = 1; i <= teams.Count; i++)
