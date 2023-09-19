@@ -29,17 +29,16 @@ List<League> leagues = new List<League>()
     league2
 };
 
-//Console.WriteLine($"hdhdfgr {Path.Combine(Environment.CurrentDirectory, "\\..\\..\\..\\files")}");
 StandardRepository<League> leagueRepo = new LeagueRepo();
+StandardRepository<Club> clubRepo = new ClubRepo();
+clubRepo.WriteAll(teams);
 //league1.CalculateNewTeamStandings();
-//leagueRepo.WriteAll(leagues);
+leagueRepo.WriteAll(leagues);
 
-League leagueOne = leagueRepo.ReadAll()[0];
+//League leagueOne = leagueRepo.ReadAll()[0];
 
-leagueOne.CalculateFirstRoundsAllTeams().ForEach(team =>
-{
-   print($"Pos: '{team.PositionInTable}' - Name: '{team.ClubName}' - Matches: '{team.MatchesPlayed}' - Points: '{team.Points}' Goal Difference: '{team.GoalDifference}' - Goals For '{team.GoalsFor}' - Goals Against: '{team.GoalsAgainst}'");
-} );
+//leagueOne.CalculateFirstRoundsAllTeams().ForEach(team =>
+//{ print($"Pos: '{team.PositionInTable}' - Name: '{team.ClubName}' - Matches: '{team.MatchesPlayed}' - Points: '{team.Points}' Goal Difference: '{team.GoalDifference}' - Goals For '{team.GoalsFor}' - Goals Against: '{team.GoalsAgainst}'"); } );
 
 void print(string line)
 {

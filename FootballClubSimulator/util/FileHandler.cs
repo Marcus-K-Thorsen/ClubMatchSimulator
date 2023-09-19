@@ -1,4 +1,4 @@
-﻿namespace FootballClubSimulator.repositories;
+﻿namespace FootballClubSimulator.util;
 
 public class FileHandler
 {
@@ -8,7 +8,7 @@ public class FileHandler
         // denne constructor skal du bare skrive navnet på den fil du vil læse fx "teams.csv"
         public FileHandler(string fileName, string header)
         {
-            FilePath = Path.Combine(Environment.CurrentDirectory, fileName);
+            FilePath = Path.Combine($"{Environment.CurrentDirectory}\\..\\..\\..\\files", fileName);
             FileHeader = header;
         }
 
