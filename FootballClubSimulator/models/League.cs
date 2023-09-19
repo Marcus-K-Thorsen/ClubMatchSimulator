@@ -64,7 +64,7 @@ public class League
 
     private List<Club> _upperClubFraction = new List<Club>();
 
-    public List<Club>? UpperClubFraction
+    public List<Club> UpperClubFraction
     {
         get { return _upperClubFraction; }
         set { _upperClubFraction = value ?? _upperClubFraction; }
@@ -127,20 +127,53 @@ public class League
         return allRound;
     }
     
-    // TODO skal lave metode der kan tage de to lister af runder og give leaguens teams deres standing ud fra rundernes udkom, listen af teams gives position, sorteres og gives tilbage
-    public List<Club> CalculateTeamStandings()
+    // TODO skal lave en metode der går gennem de første runder og returner listen af alle teams, men nu med deres standings sat ud efter de første runder
+    public List<Club> CalculateFirstRoundsAllTeams()
     {
-        // Reset alle leaguens standings
-        // Gå gennem alle de første runder og tilskriv standings til leaguens teams ud fra rundernes matchoutcome
-        // Opdel leaguens teams i upper og lower listerne ud fra deres points og derefter goal difference
-        // Gå gennem alle den anden mængde runder og tilskriv stnadings til leaguens teams ud fra rundernes matchoutcome
-        // sorter upper, lower og teams listerne ud fra deres standings og giv dem en position, som kan være delt
-        // return teams listen
+        // Kalder metoden CalculateTeamStandingsFirstRounds()
+        // og returner listen af alle teams
         return Teams;
     }
     
-    // TODO skal lave en metode der kan lave to nye lister af runder ud fra leaguens teams og kalde på standard metoden CalculateTeamStandings() og returne listen af teams
-    public List<Club> CalculateNewTeamStandings()
+    // TODO skal lave en metode der går gennem de anden runder og returner listen af upper teams, men nu med deres standings sat ud efter de anden runder
+    public List<Club> CalculateSecondRoundsUpperTeams()
+    {
+        // Kalder metoden CalculateTeamStandingsFirstRounds()
+        // Kalder metoden CalculateTeamStandingsSecondRounds()
+        // og returner listen af alle upper teams
+        return UpperClubFraction;
+    }
+    
+    // TODO skal lave en metode der går gennem de anden runder og returner listen af lower teams, men nu med deres standings sat ud efter de anden runder
+    public List<Club> CalculateSecondRoundsLowerTeams()
+    {
+        // Kalder metoden CalculateTeamStandingsFirstRounds()
+        // Kalder metoden CalculateTeamStandingsSecondRounds()
+        // og returner listen af alle lower teams
+        return LowerClubFraction;
+    }
+    
+    // TODO skal lave metode der kan tage listen af de første runder og give leaguens teams deres standing ud fra rundernes udkom, listen af teams sorteres og gives en position
+    private void CalculateTeamStandingsFirstRounds()
+    {
+        // Reset alle leaguens standings
+        // Gå gennem alle de første runder og tilskriv standings til leaguens teams ud fra rundernes matchoutcome
+        // Sorter listen af alle Teams, og giv dem en position, som kan være delt
+        
+        
+    }
+
+    // TODO skal lave en metode der kan tage den anden omgang af runder og give leaguens upper og lower teams deres standings ud efter rundernes udkom og derefter sorterer de lister og giver dem en position, der kan være delt
+    private void CalculateTeamStandingsSecondRounds()
+    {
+        // Kald metoden CalculateTeamStandingsFirstRounds()
+        // Opdel leaguens teams i upper og lower listerne, så den første halvdel af alle teams kommer i upper og resten i lower
+        // Gå gennem alle den anden mængde runder og tilskriv stadings til leaguens teams ud fra rundernes matchoutcome
+        // sorter upper og lower listerne ud fra deres standings og giv dem en position, som kan være delt
+    }
+    
+    // TODO skal lave en metode der kan lave to nye lister af runder ud fra leaguens teams
+    public void CalculateNewTeamStandings()
     {
         // Reset leaguens runde lister, første og anden
         // For antalet af FirstAmountOfRounds skab en ny liste af nye runder ud fra leaguens teams
@@ -153,8 +186,6 @@ public class League
         //      For hvert team i upper/lower teams skal det team gå igennem upper/lower teams og skipper sig selv og skabe en runde mellem den og et andet team
         //          Skab en runde der lægges i en liste
         //      Lav listen af runder til et array or læg det array i listen af anden runder
-        // Til sidst returnes metoden CalculateTeamStandings(), der giver listen af teams der er blevet udført runder på og sorteret ud efter rundernes matchoutcome
-        return CalculateTeamStandings();
     }
 
     
