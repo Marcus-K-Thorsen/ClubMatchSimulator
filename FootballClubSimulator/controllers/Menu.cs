@@ -43,7 +43,9 @@ public class Menu
                     League league = allLeagues[i]; 
                     if (input == league.LeagueName.ToLower() || input == $"{i+1}")
                     {
+                        Console.WriteLine($"Loading in League Menu for: '{league.LeagueName}'...");
                         LeagueMenu(league);
+                        incorrectInput = false;
                         break;
                     }
                     incorrectInput = true;
@@ -74,30 +76,37 @@ public class Menu
         do
         {
             List<Club> leagueClubsSortedOutcome;
-            Console.WriteLine("Enter you choice:");
+            Console.WriteLine();
             Console.WriteLine("Type '0' to go back and pick a new league.");
             Console.WriteLine("Type '1' to see the outcomes of the first rounds of all of the league's Teams.");
             Console.WriteLine("Type '2' to see the outcomes of the second rounds for the league's Upper tier.");
             Console.WriteLine("Type '3' to see the outcomes of the second rounds for the league's Lower tier.");
+            Console.WriteLine();
+            
+            Console.WriteLine("Enter you choice:");
             string? choiceInput = Console.ReadLine();
             switch (choiceInput)
             {
                 case "0":
                     // Type: "0": Break out of choice loop, as in go back and pick a new league or exit the program
+                    Console.WriteLine($"Exiting the League Menu for: '{thePickedLeague.LeagueName}'.");
                     continuePickingLeagueChoice = false;
                     break;
                 case "1":
                     // Type: "1": See outcome of the first rounds (22), prints out all the teams after first rounds
+                    Console.WriteLine("Calculating the outcomes for the First rounds of all the teams...");
                     leagueClubsSortedOutcome = thePickedLeague.CalculateFirstRoundsAllTeams();
                     PrintClubsInConsole(leagueClubsSortedOutcome);
                     break;
                 case "2":
                     // Type: "2": See outcome of the seconds rounds (5) upperbrackets, prints out the upper teams after alle rounds
+                    Console.WriteLine("Calculating the outcomes for the Second rounds of the Upper Teams...");
                     leagueClubsSortedOutcome = thePickedLeague.CalculateSecondRoundsUpperTeams();
                     PrintClubsInConsole(leagueClubsSortedOutcome);
                     break;
                 case "3":
                     // Type "3": See outcome of the seconds rounds (5) lowerbrackets, prints out the lower teams after alle rounds
+                    Console.WriteLine("Calculating the outcomes for the Second rounds of the Lower Teams...");
                     leagueClubsSortedOutcome = thePickedLeague.CalculateSecondRoundsLowerTeams();
                     PrintClubsInConsole(leagueClubsSortedOutcome);
                     break;
