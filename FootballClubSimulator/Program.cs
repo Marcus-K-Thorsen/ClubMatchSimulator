@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 
+using FootballClubSimulator.controllers;
 using FootballClubSimulator.models;
 using FootballClubSimulator.repositories;
 using FootballClubSimulator.util;
@@ -19,7 +20,7 @@ List<Club> teams = new List<Club>()
     new Club("Boldklubben Urania", "BU", league1),
     new Club("Boldklubben Lydia", "BL", league1),
     new Club("Boldklubben af 1899", "B 99", league1),
-    new Club("Kristelig Forening for Unge Mænds Boldklub", "KFUM", league1),
+    new Club("Kristelig Boldklub", "KRB", league1),
     new Club("Boldklubben Sylvia", "BS", league1),
     new Club("Boldklubben Apollo", "BA", league1)
 };
@@ -29,21 +30,23 @@ List<League> leagues = new List<League>()
     league2
 };
 
-StandardRepository<League> leagueRepo = new LeagueRepo();
-StandardRepository<Club> clubRepo = new ClubRepo();
-clubRepo.WriteAll(teams);
+//StandardRepository<League> leagueRepo = new LeagueRepo();
+
+//List<League> ligaer = leagueRepo.ReadAll();
+
+//clubRepo.WriteAll(teams);
 //league1.CalculateNewTeamStandings();
-leagueRepo.WriteAll(leagues);
+
+//leagueRepo.WriteAll(leagues);
 
 //League leagueOne = leagueRepo.ReadAll()[0];
 
-//leagueOne.CalculateFirstRoundsAllTeams().ForEach(team =>
-//{ print($"Pos: '{team.PositionInTable}' - Name: '{team.ClubName}' - Matches: '{team.MatchesPlayed}' - Points: '{team.Points}' Goal Difference: '{team.GoalDifference}' - Goals For '{team.GoalsFor}' - Goals Against: '{team.GoalsAgainst}'"); } );
+//List<Club> leagueUpperTeams = leagueOne.CalculateSecondRoundsLowerTeams();
 
-void print(string line)
-{
-    Console.WriteLine(line);
-}
+
+Menu menu = new Menu();
+menu.StartMenu();
+
 /*
 MatchSimulator match = new MatchSimulator();
 League league = new League("Some Exciting Lol League");

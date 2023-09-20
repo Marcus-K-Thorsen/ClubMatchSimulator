@@ -54,6 +54,16 @@ public class Club
     // ___________________ OTHER PROPERTIES/FIELDS _________________________________
     
     // Standing variables
+    private List<char> _streak = new List<char>();
+
+    public List<char> Streak
+    {
+        get
+        {
+            return _streak;
+        }
+    }
+
     public int PositionInTable { get; set; }
     public int MatchesPlayed { get; set; }
     public int GamesWon { get; set; }
@@ -110,9 +120,33 @@ public class Club
     
     // ___________________ SPECIAL METHODS _________________________________
 
+    public void CalculateStreak(char streakChar)
+    {
+        if (Streak.Count >= 5)
+        {
+            Streak.RemoveAt(0);
+        }
+        Streak.Add(streakChar);
+    }
+
+    public string GetStreak()
+    {
+        string streak = "";
+        if (Streak.Count == 0)
+        {
+            return "-";
+        }
+        foreach (char streakChar in Streak)
+        {
+            streak += $"{streakChar}.";
+        }
+
+        return streak;
+    }
 
     public void ResetStandings()
     {
+        Streak.Clear();
         PositionInTable = 0;
         MatchesPlayed = 0;
         GamesWon = 0;

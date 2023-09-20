@@ -288,18 +288,24 @@ public class League
                 
                 awayTeam.GoalsFor += awayGoals; 
                 awayTeam.GoalsAgainst += homeGoals; 
-                if (homeGoals > awayGoals) 
-                { 
-                    homeTeam.Points += 3; 
+                if (homeGoals > awayGoals)
+                {
+                    homeTeam.CalculateStreak('W');
+                    homeTeam.Points += 3;
+                    awayTeam.CalculateStreak('L');
                     awayTeam.Points += 0;
                 } else if (awayGoals > homeGoals) 
                 { 
-                    awayTeam.Points += 3; 
+                    awayTeam.Points += 3;
+                    awayTeam.CalculateStreak('W');
                     homeTeam.Points += 0; 
+                    homeTeam.CalculateStreak('L');
                 } else 
                 { 
-                    homeTeam.Points += 1; 
+                    homeTeam.Points += 1;
+                    homeTeam.CalculateStreak('D');
                     awayTeam.Points += 1;
+                    awayTeam.CalculateStreak('D');
                 } 
             } else 
             { 
