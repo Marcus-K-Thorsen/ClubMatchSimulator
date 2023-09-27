@@ -8,7 +8,7 @@ public class LeagueRepo : StandardRepository<League>
     private readonly StandardRepository<Club> _clubRepo;
     private readonly RoundMasterRepo _roundRepo;
     
-    public LeagueRepo() : base("league.csv", League.ConvertHeaderToCsvFormat)
+    public LeagueRepo() : base("setup.csv", League.ConvertHeaderToCsvFormat)
     {
         _clubRepo = new ClubRepo();
         _roundRepo = new RoundMasterRepo();

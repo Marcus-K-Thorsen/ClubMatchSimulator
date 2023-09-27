@@ -8,7 +8,7 @@ public class FileHandler
         // denne constructor skal du bare skrive navnet på den fil du vil læse fx "teams.csv"
         public FileHandler(string fileName, string header)
         {
-            FilePath = Path.Combine($"{Environment.CurrentDirectory}\\..\\..\\..\\files", fileName);
+            FilePath = Path.Combine($"{Environment.CurrentDirectory}\\..\\..\\..\\filer", fileName);
             FileHeader = header;
         }
 

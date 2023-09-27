@@ -69,7 +69,7 @@ public class Menu
     {
         // Show all the teams within the picked league
         Console.WriteLine($"Here are the Teams currently participating in this League: '{thePickedLeague.LeagueName}'.");
-        thePickedLeague.Teams.ForEach(team => Console.WriteLine($"Name: {team.ClubName} ({team.ClubNameAbbreviated}) - Defense: '{team.Defense}' - Offense: '{team.Offense}'"));
+        thePickedLeague.Teams.ForEach(team => Console.WriteLine($"Name: {team.ClubName} ({team.ClubNameAbbreviated})"));
         bool continuePickingLeagueChoice = true;
         
         // Pick a choice between:

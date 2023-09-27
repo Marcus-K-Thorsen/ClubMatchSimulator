@@ -171,6 +171,9 @@ public class League
         // Kald metoden CalculateTeamStandingsFirstRounds() for at sørge for at de første runder er blevet Calculated
         CalculateTeamStandingsFirstRounds();
         
+        // Sætter alle teams score til at være 0, fordi vi kun vil have resultaterne for upper bracket runderne skal vises.     
+        ResetTeamsStandings();
+        
         // Gå gennem alle den anden mængde runder og tilskriv standings til leaguens teams ud fra rundernes matchoutcome
         foreach (Round[] rounds in SecondRounds)
         {
